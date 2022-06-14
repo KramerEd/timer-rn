@@ -4,6 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView, Platform } from "react-native";
 
 import { Focus } from "./src/features/Focus";
+import { Timer } from "./src/features/Timer";
 
 export default function App() {
 	const [currentSubject, setCurrentSubject] = useState("");
@@ -12,9 +13,11 @@ export default function App() {
 			{!currentSubject ? (
 				<Focus addSubject={setCurrentSubject} />
 			) : (
-				<View>
-					<Text style={styles.text}>Lol</Text>
-				</View>
+				<Timer
+					focusSubject={currentSubject}
+					onTimerEnd={() => {}}
+					clearSubject={() => {}}
+				/>
 			)}
 		</SafeAreaView>
 	);
@@ -23,6 +26,7 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		backgroundColor: "#272252",
 	},
 	text: {
 		fontSize: 26,
